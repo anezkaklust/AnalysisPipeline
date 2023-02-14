@@ -49,7 +49,7 @@ do
     echo =================================
     python SubmitJobsToGrid_MAT_Tutorial.py --outdir /pnfs/minerva/persistent/users/${USER}/1D/${playlist}/eventloopt99z99daisy/ --stage eventLoop --playlist ${playlist} --basedir ${basedir} --runcommand "./runEventLoop_tracker_daisy . ${playlist}"
 
-    cd /pnfs/minerva/persistent/users/anezkak/
-    rm ${playlist}/*/myarea*
+    #cd /pnfs/minerva/persistent/users/anezkak/1D/
+    #rm ${playlist}/*/myarea*
     cd /minerva/app/users/anezkak/MAT_GitHub/
 done
