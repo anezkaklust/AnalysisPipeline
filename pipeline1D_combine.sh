@@ -5,28 +5,31 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/02-02-2023/1D/
+datadDir=/minerva/data/users/anezkak/${now}/1D/
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
 mkdir -p ${datadDir}
 
 # How many files do we have?
-cd /pnfs/minerva/persistent/users/anezkak/1D
+cd /pnfs/minerva/persistent/users/anezkak/1D/
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
-combinedVersion="minervame5A6ABDGI"
+combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
+#combinedVersion="minervame5A"
+
 # for all playlists
-for playlist in minervame5A minervame6A minervame6B minervame6D minervame6G minervame6I 
-#for playlist in minervame6A
-#for playlist in minervame5A minervame6A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6H minervame6I minervame6J
+#for playlist in minervame5A minervame6A minervame6B minervame6D minervame6G minervame6I 
+#for playlist in minervame5A
+for playlist in minervame5A minervame6A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6H minervame6I minervame6J
 do
     dirpwd=/pnfs/minerva/persistent/users/anezkak/1D/${playlist}/
     cd ${dirpwd}
     cp eventloopt*/*.root .
+    #cp eventloopt99z99/myarea*.tar.gz .
     cp migration*/*.root .
     cp efficiency*/*.root .
-    cp plastic*/*.root .
+    cp plastic*/Plastic*.root .
     # clean up the directories from the grid submissions
     rm -r eventloopt*/
     rm -r migration*/
@@ -126,7 +129,7 @@ do
     #python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 3 06 ${playlist} 0
     #python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 3 82 ${playlist} 0
     #python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 4 82 ${playlist} 0
-    #python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 5 26 ${playlist} 0
+    #3python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 5 26 ${playlist} 0
     #python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 5 82 ${playlist} 0
     #python ${plottingDir}plotEfficiency.py ${datadDir}/${savedir}/Efficiency/ 99 99 ${playlist} 0
     #echo Efficiency Tracker Daisy
@@ -156,7 +159,7 @@ do
     ##################################### PLOTTING ###############################################
     ##############################################################################################
     #echo Plot Scale Factors
-    #cd ${datadDir}/${savedir}/PlastisSidebands
+    cd ${datadDir}/${savedir}/PlastisSidebands
     #python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t2_z26.txt
     #python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t2_z82.txt
     #python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t3_z26.txt
@@ -165,20 +168,20 @@ do
     #python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t4_z82.txt
     #python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t5_z26.txt
     #python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t5_z82.txt
-    #echo Plot Untuned And Tuned Plastic Sidebands
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 06 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 82 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist} 
-    #python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} 
+    echo Plot Untuned And Tuned Plastic Sidebands
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 06 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} 
     ##############################################################################################
     ################################### END of Plotting ##########################################
     ##############################################################################################
 
-
+    
     echo Background Subtraction Targets
     cd ${datadDir}/${savedir}
     mkdir -p "BackgroundSubtracted"
@@ -224,19 +227,19 @@ do
     ##############################################################################################
     ############################# Single playlist cross-section ##################################
     ##############################################################################################
-
+    : '
     #echo Target Cross-section Extraction
-    #cd ${scriptDir}
-    #./extractCrossSection ${datadDir}/${savedir} 26 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont235z26.txt
-    #./extractCrossSection  ${datadDir}/${savedir} 6 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont3z06.txt
-    #./extractCrossSection ${datadDir}/${savedir} 82 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont2345z82.txt
+    cd ${scriptDir}
+    ./extractCrossSection ${datadDir}/${savedir} 26 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont235z26.txt
+    ./extractCrossSection  ${datadDir}/${savedir} 6 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont3z06.txt
+    ./extractCrossSection ${datadDir}/${savedir} 82 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont2345z82.txt
     
     #echo Tracker Cross-section Extraction
-    #./extractCrossSection ${datadDir}/${savedir} 99 ${playlist} 99 true | tee ${datadDir}/${savedir}/cross-sectiont99z99.txt
+    ./extractCrossSection ${datadDir}/${savedir} 99 ${playlist} 99 true | tee ${datadDir}/${savedir}/cross-sectiont99z99.txt
 
     #echo Daisy Tracker Cross-section Extraction
-    #./extractCrossSection_tracker_daisy ${datadDir}/${savedir} 99 99 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont99z99Daisy.txt
-    
+    ./extractCrossSection_tracker_daisy ${datadDir}/${savedir} 99 99 ${playlist} | tee ${datadDir}/${savedir}/cross-sectiont99z99Daisy.txt
+    : '
     #echo Plot Target Cross-section
     #cd ${datadDir}/${savedir}
     #python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/${savedir} 235 26 ${playlist} 0
@@ -446,7 +449,7 @@ do
     mkdir -p ${datadDir}/combined/Efficiencyt99z99Daisy
     cd ${datadDir}/combined/Efficiencyt99z99Daisy
     cp ${datadDir}/${savedir}/Efficiency/Efficiency_Daisy_${playlist}_t99_z99_sys.root .
-
+    
     cd /minerva/app/users/anezkak/MAT_GitHub/
 
 done
@@ -585,7 +588,6 @@ echo Combine root files from different playlists
 echo First combine backtround subtracted event rates
 cd ${datadDir}/combined/
 
-# PLOTTING combined stuff
 echo Event Selection plots
 cd "EventSelection"
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
@@ -597,6 +599,16 @@ python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 4 82 ${
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
+
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 3 26 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 3 06 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 3 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 4 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
 
 echo Background breakdown Targets
 python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
@@ -619,6 +631,7 @@ cd ${datadDir}/combined/
 
 echo Plot Background Subtracted Event Selections
 cd "BackgroundSubtracted"
+
 python ${plottingDir}plotCVError_bkgSubtracted.py ${datadDir}/combined/BackgroundSubtracted 2 26 ${combinedVersion} 1
 python ${plottingDir}plotCVError_bkgSubtracted.py ${datadDir}combined/BackgroundSubtracted 2 82 ${combinedVersion} 1
 python ${plottingDir}plotCVError_bkgSubtracted.py ${datadDir}/combined/BackgroundSubtracted 3 26 ${combinedVersion} 1
@@ -630,7 +643,17 @@ python ${plottingDir}plotCVError_bkgSubtracted.py ${datadDir}/combined/Backgroun
 
 echo Plot Background Subtracted Event Selection Tracker
 python ${plottingDir}plotCVError_bkgSubtracted.py ${datadDir}/combined/BackgroundSubtracted 99 99 ${combinedVersion} 1
-    
+
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 2 26 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}combined/BackgroundSubtracted 2 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 3 26 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 3 06 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 3 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 4 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 5 26 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 5 82 ${combinedVersion} 1
+python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combined/BackgroundSubtracted 99 99 ${combinedVersion} 1
+
 echo Plot Background Subtracted Event Selection Tracker Daisy 
 python ${plottingDir}plotDaisyDistrib_bkgSubtracted.py ${datadDir}/combined/BackgroundSubtracted ${combinedVersion} 1
 
@@ -678,7 +701,37 @@ echo Tracker Cross-section Extraction
 
 echo Daisy Tracker Cross-section Extraction
 cd ${scriptDir}
-./extractCrossSection_tracker_daisy ${datadDir}/combined/ 99 99 ${combinedVersion} | tee ${datadDir}/combined/cross-sectiont99z99Daisy.txt
+./extractCrossSection_tracker_daisy ${datadDir}/combined/ 99 99 ${combinedVersion} Enu | tee ${datadDir}/combined/cross-sectiont99z99Daisy_Enu.txt
+./extractCrossSection_tracker_daisy ${datadDir}/combined/ 99 99 ${combinedVersion} x | tee ${datadDir}/combined/cross-sectiont99z99Dais_x.txt
+./extractCrossSection_tracker_daisy ${datadDir}/combined/ 99 99 ${combinedVersion} pTmu1D | tee ${datadDir}/combined/cross-sectiont99z99Daisy_pTmu1D.txt
+./extractCrossSection_tracker_daisy ${datadDir}/combined/ 99 99 ${combinedVersion} pZmu1D | tee ${datadDir}/combined/cross-sectiont99z99Daisy_pZmu1D.txt
+./extractCrossSection_tracker_daisy ${datadDir}/combined/ 99 99 ${combinedVersion} ThetamuDeg | tee ${datadDir}/combined/cross-sectiont99z99Daisy_ThetamuDeg.txt
+
+echo Single Target Cross-section Extraction
+cd ${scriptDir}
+./extractCrossSection_single ${datadDir}/combined/ 26 ${combinedVersion} 2 | tee ${datadDir}/combined/cross-sectiont2z26.txt
+./extractCrossSection_single ${datadDir}/combined/ 26 ${combinedVersion} 3 | tee ${datadDir}/combined/cross-sectiont3z26.txt
+./extractCrossSection_single ${datadDir}/combined/ 26 ${combinedVersion} 5 | tee ${datadDir}/combined/cross-sectiont5z26.txt
+
+./extractCrossSection_single ${datadDir}/combined/ 82 ${combinedVersion} 2 | tee ${datadDir}/combined/cross-sectiont2z82.txt
+./extractCrossSection_single ${datadDir}/combined/ 82 ${combinedVersion} 3 | tee ${datadDir}/combined/cross-sectiont3z82.txt
+./extractCrossSection_single ${datadDir}/combined/ 82 ${combinedVersion} 4 | tee ${datadDir}/combined/cross-sectiont4z82.txt
+./extractCrossSection_single ${datadDir}/combined/ 82 ${combinedVersion} 5 | tee ${datadDir}/combined/cross-sectiont5z82.txt
+
+echo Plot Single Target Cross-section
+cd ${datadDir}/combined/
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 2 26 ${combinedVersion} 1
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 3 26 ${combinedVersion} 1
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 5 26 ${combinedVersion} 1
+
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 2 82 ${combinedVersion} 1
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 3 82 ${combinedVersion} 1
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 4 82 ${combinedVersion} 1
+python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 5 82 ${combinedVersion} 1
+
+echo Plot Single Target Cross-section Comparison Iron and Lead
+python ${plottingDir}plotXsection_dataMCratio_single.py ${datadDir}/combined/ 26 ${combinedVersion} 1
+python ${plottingDir}plotXsection_dataMCratio_single.py ${datadDir}/combined/ 82 ${combinedVersion} 1
 
 echo Plot Target Cross-section
 cd ${datadDir}/combined/
@@ -690,7 +743,13 @@ echo Plot Tracker Cross-section
 python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 99 99 ${combinedVersion} 1
 
 echo Plot Tracker Daisy Cross-section
-python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1
+python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 Enu
+python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 x
+python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pTmu1D
+python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pZmu1D
+python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 ThetamuDeg
+
+python ${plottingDir}plotXsection_trackerDaisy_angle.py ${datadDir}/combined/ ${combinedVersion} 1
 
 echo Plot Stacked Target Cross-section
 cd ${datadDir}/combined/
@@ -710,14 +769,30 @@ echo Plot Tracker Data/MC Cross-section ratios
 python ${plottingDir}plotXsection_combinedTarget_dataMCratio.py ${datadDir}/combined/ 99 99 ${combinedVersion} 1
 
 echo Plot Daisy Target/Tracker Ratios
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 Enu
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 Enu
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 Enu
+
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 x
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 x
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 x 
+
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 pTmu1D
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 pTmu1D
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 pTmu1D
+
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 pZmu1D
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 pZmu1D
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 pZmu1D 
+
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 ThetamuDeg
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 ThetamuDeg
+python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 ThetamuDeg
 
 # plot ratios with intType
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 0
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 0
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 0
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 0
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 0
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 0
 
 echo Plot Non-Daisy Target/Tracker Ratios
 python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 26 ${combinedVersion} 1
@@ -725,8 +800,9 @@ python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 06 ${combinedVe
 python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 82 ${combinedVersion} 1
 
 # plot ratios with intType
-python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 26 ${combinedVersion} 0
-python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 06 ${combinedVersion} 0
-python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 82 ${combinedVersion} 0
+#python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 26 ${combinedVersion} 0
+#python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 06 ${combinedVersion} 0
+#python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 82 ${combinedVersion} 0
 
 cd /minerva/app/users/anezkak/MAT_GitHub/
+
