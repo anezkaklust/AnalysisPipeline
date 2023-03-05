@@ -176,7 +176,7 @@ if opts.mail:
 #cmd += "--subgroup=Nightly " #This is only for high priority jobs
 cmd += "--resource-provides=usage_model=DEDICATED,OPPORTUNISTIC " 
 cmd += "--role=Analysis " 
-cmd += "--expected-lifetime 36h " 
+cmd += "--expected-lifetime 90h " 
 cmd += "--memory "+str(memory)+"MB " 
 #cmd += configstring+" " #the environments for the tunes to bee applied
 cmd += "-f "+opts.outdir+"/myareatar_"+tag_name+".tar.gz " 
