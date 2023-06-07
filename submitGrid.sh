@@ -1,14 +1,12 @@
 #!/bin/bash
 
 echo Event Loop
-source submitEventLoop.sh 1D | tee eventLoopSubmission.txt
+source submitEventLoop.sh 1D_v1-nonrespi  2>&1 | tee eventLoopSubmission_1D_v1-nonrespi.txt
 echo Efficiency
-source submitEfficiency.sh 1D | tee efficiencySubmission.txt
+source submitEfficiency.sh 1D_v1-nonrespi 2>&1 | tee efficiencySubmission_1D_v1-nonrespi.txt
 echo Migration
-source submitMigration.sh 1D | tee migrationSubmission.txt
-#echo Migration2D
-#source submitMigration2D.sh | tee migrationSubmission2D.txt
+source submitMigration.sh 1D_v1-nonrespi 2>&1 | tee migrationSubmission_1D_v1-nonrespi.txt
 echo Plastic Sidebands
-source submitPlasticSidebands.sh 1D | tee plasticSubmission.txt
+source submitPlasticSidebands.sh 1D_v1-nonrespi 2>&1 | tee plasticSubmission_1D_v1-nonrespi.txt
 
 echo DONE
