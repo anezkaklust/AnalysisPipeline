@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo Event Loop
-source submitEventLoop.sh amudiswarp | tee eventLoopSubmission.txt
+source submitEventLoop.sh enuratio 2>&1| tee eventLoopSubmission_enuratio.txt
 echo Efficiency
-source submitEfficiency.sh  amudiswarp | tee efficiencySubmission.txt
+source submitEfficiency.sh enuratio 2>&1| tee efficiencySubmission_enuratio.txt
 echo Plastic Sidebands
-source submitPlasticSidebands.sh  amudiswarp | tee plasticSubmission.txt
+source submitPlasticSidebands.sh enuratio 2>&1| tee plasticSubmission_enuratio.txt
 
 echo DONE

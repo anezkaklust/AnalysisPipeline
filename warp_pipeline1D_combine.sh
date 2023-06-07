@@ -5,14 +5,14 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/${now}/1D_nonrespiwarp20Gev/
+datadDir=/minerva/data/users/anezkak/05-31-2023/pzmuratio_CVv1-nonrespi/
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
 mkdir -p ${datadDir}
 
 # How many files do we have?
-cd /pnfs/minerva/persistent/users/anezkak/nonrespiwarp20Gev/
+cd /pnfs/minerva/persistent/users/anezkak/pzmuratio/
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
 combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
@@ -23,7 +23,8 @@ combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
 #for playlist in minervame5A
 for playlist in minervame5A minervame6A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6H minervame6I minervame6J
 do
-    dirpwd=/pnfs/minerva/persistent/users/anezkak/nonrespiwarp20Gev/${playlist}/
+    dirpwd=/pnfs/minerva/persistent/users/anezkak/pzmuratio/${playlist}/
+    echo ${dirpwd}
     cd ${dirpwd}
     cp eventloopt*/*.root .
     cp efficiency*/*.root .
@@ -246,6 +247,7 @@ python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont99z99/ ../EventSelection_${combinedVersion}_t99_z99_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont99z99Daisy/ ../EventSelection_daisy_${combinedVersion}_t99_z99_sys.root
 
+
 echo Combine efficiencies
 # Need to have it here until I fix it because using POT from bkg subtracted
 # Need to combine before I combine bkg subtracted, otherwise index out of range
@@ -329,12 +331,6 @@ cd "Efficiency"
 mv ${datadDir}/combined/Efficiency_${combinedVersion}*.root .
 mv ${datadDir}/combined/Efficiency_Daisy_${combinedVersion}*.root .
 
-cd ${datadDir}/combined/
-
-# PLOTTING combined stuff
-# Combine root files from different playlist 
-echo Combine root files from different playlists
-echo First combine backtround subtracted event rates
 cd ${datadDir}/combined/
 
 ##########################################################
