@@ -5,25 +5,26 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/${now}/1D/
+datadDir=/minerva/data/users/anezkak/${now}_v1-nonrespi/1D/
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
 mkdir -p ${datadDir}
 
 # How many files do we have?
-cd /pnfs/minerva/persistent/users/anezkak/1D/
+cd /pnfs/minerva/persistent/users/anezkak/1D_v1-nonrespi/
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
 combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
 #combinedVersion="minervame5A"
 
 # for all playlists
-#for playlist in minervame5A minervame6A minervame6B minervame6D minervame6G minervame6I 
 #for playlist in minervame5A
 for playlist in minervame5A minervame6A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6H minervame6I minervame6J
+
 do
-    dirpwd=/pnfs/minerva/persistent/users/anezkak/1D/${playlist}/
+    dirpwd=/pnfs/minerva/persistent/users/anezkak/1D_v1-nonrespi/${playlist}/
+    echo ${dirpwd}
     cd ${dirpwd}
     cp eventloopt*/*.root .
     #cp eventloopt99z99/myarea*.tar.gz .
@@ -464,6 +465,8 @@ echo Check number of files
 echo "CHECK THIS!! IMPORTANT"
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
+python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont99z99Daisy/ ../EventSelection_daisy_${combinedVersion}_t99_z99_sys.root
+
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont02z26/ ../EventSelection_${combinedVersion}_t2_z26_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont02z82/ ../EventSelection_${combinedVersion}_t2_z82_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont03z26/ ../EventSelection_${combinedVersion}_t3_z26_sys.root
@@ -473,7 +476,6 @@ python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont05z26/ ../EventSelection_${combinedVersion}_t5_z26_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont05z82/ ../EventSelection_${combinedVersion}_t5_z82_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont99z99/ ../EventSelection_${combinedVersion}_t99_z99_sys.root
-python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/EventSelectiont99z99Daisy/ ../EventSelection_daisy_${combinedVersion}_t99_z99_sys.root
 
 echo Combine efficiencies
 # Need to have it here until I fix it because using POT from bkg subtracted
@@ -547,10 +549,10 @@ python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt99z99
 #python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Efficiencyt99z99Daisy ../Efficiency_Daisy_${combinedVersion}_t99_z99_sys.root
 
 # clean up 
-rm -r ${datadDir}/combined/EventSelectiont*
-rm -r ${datadDir}/combined/BackgroundSubtractedt*
-rm -r ${datadDir}/combined/Migrationt*
-rm -r ${datadDir}/combined/Efficiencyt*
+#rm -r ${datadDir}/combined/EventSelectiont*
+#rm -r ${datadDir}/combined/BackgroundSubtractedt*
+#rm -r ${datadDir}/combined/Migrationt*
+#rm -r ${datadDir}/combined/Efficiencyt*
 
 cd ${datadDir}/combined/
 

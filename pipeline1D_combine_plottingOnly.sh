@@ -5,12 +5,12 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/03-04-2023/1D/
+datadDir=/minerva/data/users/anezkak/06-05-2023_v1-nonrespi/1D/
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
 # How many files do we have?
-cd /pnfs/minerva/persistent/users/anezkak/1D
+cd /pnfs/minerva/persistent/users/anezkak/1D_v1-nonrespi/
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
 combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
@@ -124,13 +124,16 @@ python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 99 99 ${c
 echo Efficiency Tracker Daisy
 python ${plottingDir}plotDaisyEfficiency.py ${datadDir}/combined/Efficiency ${combinedVersion} 1
 
+: '
 echo Target Cross-section Extraction
 cd ${scriptDir}
 ./extractCrossSection ${datadDir}/combined/ 26 ${combinedVersion} | tee ${datadDir}/combined/cross-sectiont235z26.txt
+
 ./extractCrossSection ${datadDir}/combined/ 6 ${combinedVersion} | tee ${datadDir}/combined/cross-sectiont3z06.txt
 ./extractCrossSection ${datadDir}/combined/ 82 ${combinedVersion} | tee ${datadDir}/combined/cross-sectiont2345z82.txt
 echo Tracker Cross-section Extraction
 ./extractCrossSection ${datadDir}/combined/ 99 ${combinedVersion} 99 true | tee ${datadDir}/combined/cross-sectiont99z99.txt
+
 
 echo Daisy Tracker Cross-section Extraction
 cd ${scriptDir}
@@ -165,7 +168,7 @@ python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 5 82 $
 echo Plot Single Target Cross-section Comparison Iron and Lead
 python ${plottingDir}plotXsection_dataMCratio_single.py ${datadDir}/combined/ 26 ${combinedVersion} 1
 python ${plottingDir}plotXsection_dataMCratio_single.py ${datadDir}/combined/ 82 ${combinedVersion} 1
-
+: '
 echo Plot Target Cross-section
 cd ${datadDir}/combined/
 python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 235 26 ${combinedVersion} 1
@@ -181,8 +184,6 @@ python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combin
 python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pTmu1D
 python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pZmu1D
 python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 ThetamuDeg
-
-python ${plottingDir}plotXsection_trackerDaisy_angle.py ${datadDir}/combined/ ${combinedVersion} 1
 
 echo Plot Stacked Target Cross-section
 cd ${datadDir}/combined/
