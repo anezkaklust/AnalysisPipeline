@@ -52,7 +52,7 @@ do
 
     #cd /pnfs/minerva/persistent/users/anezkak/1d/
     #rm ${playlist}/*/myarea*
-     cd /minerva/app/users/anezkak/MAT_GitHub/
+    cd /minerva/app/users/anezkak/MAT_GitHub/
     rm eventLoop_${playlist}_wrapper_tag_default_*.sh
     cd /minerva/app/users/anezkak/MAT_GitHub/
 
