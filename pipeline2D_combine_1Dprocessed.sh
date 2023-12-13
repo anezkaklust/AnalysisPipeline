@@ -5,10 +5,10 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/panel_plottingConcise/
-datadDir=/minerva/data/users/anezkak/06-06-2023_v1-nonrespi/2D/
+datadDir=/minerva/data/users/anezkak/07-10-2023_v430/2D/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists2D/
-anaDir1D=/minerva/data/users/anezkak/06-05-2023_v1-nonrespi/1D/combined/
-migrationDir=/pnfs/minerva/persistent/users/anezkak/2D_v1-nonrespi/
+anaDir1D=/minerva/data/users/anezkak/07-10-2023_v430/1D/combined/
+migrationDir=/pnfs/minerva/persistent/users/anezkak/2D_v430/
 
 # How many files do we have?
 cd ${migrationDir}
@@ -32,25 +32,25 @@ echo Efficiency
 mkdir -p Efficiency
 cd Efficiency
 cp ${anaDir1D}/Efficiency/*.root .
-
+MULTILINE-COMMENT
 cd ${datadDir}/combined/
 
 echo Background Subtracted
 mkdir -p BackgroundSubtracted
 cd BackgroundSubtracted
 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 2 26 ${combinedVersion} 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 2 82 ${combinedVersion} 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 3 06 ${combinedVersion} 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 3 26 ${combinedVersion} 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 3 82 ${combinedVersion} 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 4 82 ${combinedVersion} 
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 5 26 ${combinedVersion}  
-python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 5 82 ${combinedVersion} 
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 2 26 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 2 82 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 3 06 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 3 26 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 3 82 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 4 82 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 5 26 ${combinedVersion} 1
+python ${scriptDir}/BackgroundSubtraction2D_Target.py ${datadDir}/combined/ 5 82 ${combinedVersion} 1
 
 python ${scriptDir}/BackgroundSubtraction2D_Tracker.py ${datadDir}/combined/  ${combinedVersion}
 python ${scriptDir}/BackgroundSubtraction2D_Tracker_Daisy.py  ${datadDir}/combined/  ${combinedVersion}
-
+<< 'MULTILINE-COMMENT'
 cd ${datadDir}
 
 echo Migration
@@ -136,7 +136,7 @@ cd ${datadDir}/combined/
 echo Check number of files
 echo "CHECK THIS!! IMPORTANT"
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
-
+MULTILINE-COMMENT
 echo Combine migrations
 cd ${datadDir}/combined/
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt02z26 ../Migration2D_${combinedVersion}_t2_z26_sys.root
@@ -147,8 +147,13 @@ python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt03z82
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt04z82 ../Migration2D_${combinedVersion}_t4_z82_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt05z26 ../Migration2D_${combinedVersion}_t5_z26_sys.root
 python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt05z82 ../Migration2D_${combinedVersion}_t5_z82_sys.root
-python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt99z99 Migration_${combinedVersion}_t99_z99_sys.root
+cd ${datadDir}/combined/
+python ${scriptDir}combinePlaylistHistos.py ${datadDir}/combined/Migrationt99z99 ../Migration2D_${combinedVersion}_t99_z99_sys.root
 
+cd ${datadDir}/combined/Migrationt99z99Daisy
+madd ../Migration2D_Daisy_${combinedVersion}_t99_z99_sys.root Migration2D_Daisy_minervame5A_t99_z99_sys.root  Migration2D_Daisy_minervame6A_t99_z99_sys.root  Migration2D_Daisy_minervame6B_t99_z99_sys.root Migration2D_Daisy_minervame6C_t99_z99_sys.root  Migration2D_Daisy_minervame6D_t99_z99_sys.root  Migration2D_Daisy_minervame6E_t99_z99_sys.root Migration2D_Daisy_minervame6F_t99_z99_sys.root  Migration2D_Daisy_minervame6G_t99_z99_sys.root   Migration2D_Daisy_minervame6H_t99_z99_sys.root Migration2D_Daisy_minervame6I_t99_z99_sys.root  Migration2D_Daisy_minervame6J_t99_z99_sys.root
+# madd <cmobined> <root files I want to combine?
+#MULTILINE-COMMENT
 echo Combine migrations
 cd ${datadDir}/combined/
 
@@ -158,19 +163,14 @@ cd ${datadDir}/combined/
 
 mkdir -p "Migration"
 cd "Migration"
-mv ${datadDir}/combined/Migration2D_${combinedVersion}*.root .
-mv ${datadDir}/combined/Migration2D_Daisy_${combinedVersion}*.root .
-MULTILINE-COMMENT
+mv ${datadDir}/combined/Migration*.root .
+#mv ${datadDir}/combined/*/Migration2D_Daisy_${combinedVersion}*.root .
+#MULTILINE-COMMENT
 cd ${datadDir}/combined/
-MULTILINE-COMMENT
+#MULTILINE-COMMENT
 # PLOTTING combined stuff
 # Combine root files from different playlist 
-<< 'MULTILINE-COMMENT'
-
-
-echo Combine root files from different playlists
-echo First combine backtround subtracted event rates
-cd ${datadDir}/combined/
+#<< 'MULTILINE-COMMENT'
 
 echo Event Selection plots
 cd "EventSelection"
@@ -228,7 +228,7 @@ echo Plot Background Subtracted Event Selections Targets w/o plastic sideband
 
 echo Plot Background Subtracted Event Selections Tracker
 ./plotBkgSubtracted2D ${datadDir}/combined/BackgroundSubtracted ${datadDir}/combined/BackgroundSubtracted 99 99 ${combinedVersion} 1
-MULTILINE-COMMENT
+#MULTILINE-COMMENT
 echo Plot Fractional Errors Background Subtracted Event Selections
 echo Data
 cd ${plottingDir}
@@ -244,7 +244,7 @@ cd ${plottingDir}
 ./plotFractionalError2D_BkgSubtractedData ${datadDir}/combined/BackgroundSubtracted ${datadDir}/combined/BackgroundSubtracted 3 06 ${combinedVersion} 1
 
 ./plotFractionalError2D_BkgSubtractedData ${datadDir}/combined/BackgroundSubtracted ${datadDir}/combined/BackgroundSubtracted 99 99 ${combinedVersion} 1
-<< 'MULTILINE-COMMENT'
+#<< 'MULTILINE-COMMENT'
 echo MC
 ./plotFractionalError2D_BkgSubtractedMC  ${datadDir}/combined/BackgroundSubtracted ${datadDir}/combined/BackgroundSubtracted 2 26 ${combinedVersion} 1
 ./plotFractionalError2D_BkgSubtractedMC  ${datadDir}/combined/BackgroundSubtracted ${datadDir}/combined/BackgroundSubtracted 3 26 ${combinedVersion} 1
@@ -392,7 +392,7 @@ cd ${plottingDir}
 
 ./plotUnfoldedEffCorrected2D ${datadDir}/combined/ ${datadDir}/combined 99 99 99 ${combinedVersion}
 
-MULTILINE-COMMENT
+#MULTILINE-COMMENT
 echo Plot Total Unfolded Eff Corrected
 cd ${plottingDir}
 

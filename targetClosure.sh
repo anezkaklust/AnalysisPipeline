@@ -26,7 +26,7 @@ playlist="minervame6A"
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/closure/
 #datadDir=/minerva/data/users/anezkak/${now}/1D/
-datadDir=/minerva/data/users/anezkak/02-20-2023/1D/
+datadDir=/minerva/data/users/anezkak/06-05-2023_v1-nonrespi/1D/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/closureTest/
 playlistDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/include/playlists/
 

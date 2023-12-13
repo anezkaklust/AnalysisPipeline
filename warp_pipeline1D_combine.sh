@@ -3,16 +3,15 @@
 now=$(date +%m-%d-%Y)
 printf "%s\n" "$now"
 
-
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/05-31-2023/pzmuratio_CVv1-nonrespi/
+datadDir=/minerva/data/users/anezkak/07-10-2023_v430/1D_neutron20Mevwarp
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
 mkdir -p ${datadDir}
 
 # How many files do we have?
-cd /pnfs/minerva/persistent/users/anezkak/pzmuratio/
+cd /pnfs/minerva/persistent/users/anezkak/1D_v430_neutron20Mev/
 du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
 combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
@@ -22,8 +21,10 @@ combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
 #for playlist in minervame5A minervame6A minervame6B minervame6D minervame6G minervame6I 
 #for playlist in minervame5A
 for playlist in minervame5A minervame6A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6H minervame6I minervame6J
+
+
 do
-    dirpwd=/pnfs/minerva/persistent/users/anezkak/pzmuratio/${playlist}/
+    dirpwd=/pnfs/minerva/persistent/users/anezkak/1D_v430_neutron20Mev/${playlist}/
     echo ${dirpwd}
     cd ${dirpwd}
     cp eventloopt*/*.root .

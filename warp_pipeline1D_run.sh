@@ -5,14 +5,14 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-#datadDir=/minerva/data/users/anezkak/${now}/1D_nonrespiwarp20Gev/
-datadDir=/minerva/data/users/anezkak/05-31-2023/2p2hwarp_CVv1-nonrespi
+datadDir=/minerva/data/users/anezkak/07-10-2023_v430/1D_v430_neutron20Mevwarp/
+#datadDir=/minerva/data/users/anezkak/05-31-2023/2p2hwarp_CVv1-nonrespi
 
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
-CVfiles=/minerva/data/users/anezkak/06-05-2023_v1-nonrespi/1D/combined/
+CVfiles=/minerva/data/users/anezkak/07-10-2023_v430/1D/combined/
 #/minerva/data/users/anezkak/03-04-2023/1D/combined/
-warp="2p2hWarp_CVv1-nonrespi"
+warp="v430_neutron20Mevwarp"
 
 mkdir -p ${datadDir}
 
@@ -24,7 +24,7 @@ combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
 #for playlist in minervame5A
 
 #dir to save
-saveDir=2p2h
+saveDir=v430_neutron20Mevwarp
 
 # PLOTTING combined stuff
 # Combine root files from different playlist 
