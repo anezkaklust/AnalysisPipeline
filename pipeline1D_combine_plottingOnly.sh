@@ -5,13 +5,13 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/06-05-2023_v1-nonrespi/1D/
+datadDir=/minerva/data/users/anezkak/10-25-2023_v430_p4/1D/
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
 # How many files do we have?
-cd /pnfs/minerva/persistent/users/anezkak/1D_v1-nonrespi/
-du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
+#cd /pnfs/minerva/persistent/users/anezkak/1D_v1-nonrespi/
+#du -a | cut -d/ -f2 | sort | uniq -c | sort -nr
 
 combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
 # for all playlists
@@ -23,6 +23,7 @@ cd ${datadDir}/combined/
 
 echo Event Selection plots
 cd "EventSelection"
+: '
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 3 26 ${combinedVersion} 1
@@ -42,7 +43,7 @@ python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelect
 python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
 python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
 python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
-
+ '
 echo Background breakdown Targets
 python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
 python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
@@ -55,7 +56,7 @@ python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelectio
 
 echo Background breakdown Tracker
 python ${plottingDir}plotStackedBkg_tracker.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
-
+: '
 echo Event Loop Tracker Daisy
 python ${plottingDir}plotDaisyDistrib.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
 python ${plottingDir}plotDaisyDistrib_withBkg.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
@@ -123,7 +124,7 @@ python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 99 99 ${c
 
 echo Efficiency Tracker Daisy
 python ${plottingDir}plotDaisyEfficiency.py ${datadDir}/combined/Efficiency ${combinedVersion} 1
-
+'
 : '
 echo Target Cross-section Extraction
 cd ${scriptDir}
@@ -169,6 +170,7 @@ echo Plot Single Target Cross-section Comparison Iron and Lead
 python ${plottingDir}plotXsection_dataMCratio_single.py ${datadDir}/combined/ 26 ${combinedVersion} 1
 python ${plottingDir}plotXsection_dataMCratio_single.py ${datadDir}/combined/ 82 ${combinedVersion} 1
 : '
+: '
 echo Plot Target Cross-section
 cd ${datadDir}/combined/
 python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 235 26 ${combinedVersion} 1
@@ -179,11 +181,11 @@ echo Plot Tracker Cross-section
 python ${plottingDir}plotXsection_combinedTarget.py ${datadDir}/combined/ 99 99 ${combinedVersion} 1
 
 echo Plot Tracker Daisy Cross-section
-python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 Enu
+#python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 Enu
 python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 x
 python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pTmu1D
-python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pZmu1D
-python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 ThetamuDeg
+#python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pZmu1D
+#python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 ThetamuDeg
 
 echo Plot Stacked Target Cross-section
 cd ${datadDir}/combined/
@@ -203,9 +205,9 @@ echo Plot Tracker Data/MC Cross-section ratios
 python ${plottingDir}plotXsection_combinedTarget_dataMCratio.py ${datadDir}/combined/ 99 99 ${combinedVersion} 1
 
 echo Plot Daisy Target/Tracker Ratios
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 Enu
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 Enu
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 Enu
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 Enu
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 Enu
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 Enu
 
 python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 x
 python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 x
@@ -215,13 +217,13 @@ python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1
 python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 pTmu1D
 python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 pTmu1D
 
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 pZmu1D
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 pZmu1D
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 pZmu1D 
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 pZmu1D
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 pZmu1D
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 pZmu1D 
 
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 ThetamuDeg
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 ThetamuDeg
-python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 ThetamuDeg
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 1 ThetamuDeg
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 06 ${combinedVersion} 1 ThetamuDeg
+#python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 82 ${combinedVersion} 1 ThetamuDeg
 
 # plot ratios with intType
 #python ${plottingDir}ratiosXsec.py ${datadDir}/combined/ 26 ${combinedVersion} 0
@@ -237,5 +239,5 @@ python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 82 ${combinedVe
 #python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 26 ${combinedVersion} 0
 #python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 06 ${combinedVersion} 0
 #python ${plottingDir}ratiosXsec_noDaisy.py ${datadDir}/combined/ 82 ${combinedVersion} 0
-
+'
 cd /minerva/app/users/anezkak/MAT_GitHub/
