@@ -43,7 +43,7 @@ python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelect
 python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
 python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
 python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
- '
+ 
 echo Background breakdown Targets
 python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
 python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
@@ -56,6 +56,7 @@ python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelectio
 
 echo Background breakdown Tracker
 python ${plottingDir}plotStackedBkg_tracker.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
+'
 : '
 echo Event Loop Tracker Daisy
 python ${plottingDir}plotDaisyDistrib.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
@@ -107,7 +108,7 @@ python ${plottingDir}plotMigrationMatrix.py ${datadDir}combined/Migration 99 99 
 
 echo Migration Tracker Daisy
 python ${plottingDir}plotDaisyMigrationMatrix.py ${datadDir}/combined/Migration ${combinedVersion}
-
+'
 cd ${datadDir}/combined/
 
 echo Efficiency plots
@@ -124,7 +125,7 @@ python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 99 99 ${c
 
 echo Efficiency Tracker Daisy
 python ${plottingDir}plotDaisyEfficiency.py ${datadDir}/combined/Efficiency ${combinedVersion} 1
-'
+
 : '
 echo Target Cross-section Extraction
 cd ${scriptDir}

@@ -139,42 +139,42 @@ do
 
     echo Plastic sidebands Scale Factors
     cd ${datadDir}/${savedir}
-    mkdir -p "PlastisSidebands"
-    cd "PlastisSidebands"
+    mkdir -p "PlasticSidebands"
+    cd "PlasticSidebands"
     cp ${dirpwd}/PlasticBkg*.root .
     cd ${scaleFacDir}
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t2_z26.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t2_z82.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t3_z26.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 06 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t3_z06.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t3_z82.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t4_z82.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t5_z26.txt
-    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/plasticSidebands_t5_z82.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 2 26 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t2_z26.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 2 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t2_z82.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 26 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t3_z26.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 06 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t3_z06.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t3_z82.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 4 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t4_z82.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 5 26 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t5_z26.txt
+    ./getScaleFactors_PlasticSB ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 5 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/plasticSidebands_t5_z82.txt
     
     
     ##############################################################################################
     ##################################### PLOTTING ###############################################
     ##############################################################################################
     echo Plot Scale Factors
-    cd ${datadDir}/${savedir}/PlastisSidebands
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t2_z26.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t2_z82.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t3_z26.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 06 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t3_z06.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t3_z82.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t4_z82.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t5_z26.txt
-    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} | tee ${datadDir}/${savedir}/PlastisSidebands/scaleFactors_t5_z82.txt
+    cd ${datadDir}/${savedir}/PlasticSidebands
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 2 26 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t2_z26.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 2 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t2_z82.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 26 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t3_z26.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 06 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t3_z06.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t3_z82.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 4 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t4_z82.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 5 26 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t5_z26.txt
+    python ${plottingDir}printScaleFactors.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 5 82 ${playlist} | tee ${datadDir}/${savedir}/PlasticSidebands/scaleFactors_t5_z82.txt
     echo Plot Untuned And Tuned Plastic Sidebands
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 06 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 3 82 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist} 
-    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlastisSidebands/ ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 2 26 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 2 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 26 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 06 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 3 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 4 82 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 5 26 ${playlist} 
+    python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/${savedir}/PlasticSidebands/ ${datadDir}/${savedir}/PlasticSidebands 5 82 ${playlist} 
     ##############################################################################################
     ################################### END of Plotting ##########################################
     ##############################################################################################
@@ -184,14 +184,14 @@ do
     cd ${datadDir}/${savedir}
     mkdir -p "BackgroundSubtracted"
     cd "BackgroundSubtracted"
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 2 26 ${playlist}
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 2 82 ${playlist} 
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 3 26 ${playlist}
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 3 06 ${playlist}
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 3 82 ${playlist} 
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 4 82 ${playlist}
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 5 26 ${playlist}
-    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlastisSidebands 5 82 ${playlist} 
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 2 26 ${playlist}
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 2 82 ${playlist} 
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 3 26 ${playlist}
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 3 06 ${playlist}
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 3 82 ${playlist} 
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 4 82 ${playlist}
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 5 26 ${playlist}
+    python ${scriptDir}BackgroundSubtraction.py ${datadDir}/${savedir} ${datadDir}/${savedir}/PlasticSidebands 5 82 ${playlist} 
     
     echo Background Subtraction Tracker
     python ${scriptDir}BackgroundSubtraction_Tracker.py ${datadDir}/${savedir} ${playlist} 
