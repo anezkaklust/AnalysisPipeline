@@ -120,7 +120,7 @@ output_dir = "$CONDOR_DIR_HISTS/"
 if(not os.path.isdir(opts.outdir)):
     os.makedirs(opts.outdir)
 
-memory = 3000
+memory = 4000
 
 # Check the stage is valid or not
 if opts.stage not in valid_stages:
