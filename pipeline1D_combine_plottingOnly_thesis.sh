@@ -91,7 +91,7 @@ python ${plottingDir}plotCVError_bkgSubtracted_dataMCratio.py ${datadDir}/combin
 
 echo Plot Background Subtracted Event Selection Tracker Daisy 
 python ${plottingDir}plotDaisyDistrib_bkgSubtracted.py ${datadDir}/combined/BackgroundSubtracted ${combinedVersion} 1
-
+'
 cd ${datadDir}/combined/
 
 echo Migration plots
@@ -108,26 +108,20 @@ python ${plottingDir}plotMigrationMatrix.py ${datadDir}combined/Migration 99 99 
 
 echo Migration Tracker Daisy
 python ${plottingDir}plotDaisyMigrationMatrix.py ${datadDir}/combined/Migration ${combinedVersion}
-'
 
 cd ${datadDir}/combined/
 
 echo Efficiency plots
 cd "Efficiency"
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 2 26 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 2 82 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 3 26 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 3 06 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 3 82 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 4 82 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 5 26 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 5 82 ${combinedVersion} 1
-python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 99 99 ${combinedVersion} 1
-: '
+python ${plottingDir}plotEfficiency_combined.py ${datadDir}/combined/Efficiency 26 ${combinedVersion} 1
+python ${plottingDir}plotEfficiency_combined.py ${datadDir}/combined/Efficiency 82 ${combinedVersion} 1
+python ${plottingDir}plotEfficiency_combined.py ${datadDir}/combined/Efficiency 06 ${combinedVersion} 1
+python ${plottingDir}plotEfficiency_combined.py ${datadDir}/combined/Efficiency 99 ${combinedVersion} 1
+
 echo Efficiency Tracker Daisy
 python ${plottingDir}plotDaisyEfficiency.py ${datadDir}/combined/Efficiency ${combinedVersion} 1
 
-
+: '
 echo Target Cross-section Extraction
 cd ${scriptDir}
 ./extractCrossSection ${datadDir}/combined/ 26 ${combinedVersion} | tee ${datadDir}/combined/cross-sectiont235z26.txt
