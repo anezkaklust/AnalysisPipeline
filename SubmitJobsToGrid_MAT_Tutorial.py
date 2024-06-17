@@ -25,6 +25,7 @@ def writeSetups(mywrapper,basedir):
     mywrapper.write("source setup_utils.sh\n")
     mywrapper.write("cd "+topdir+"\n")
     mywrapper.write("source /cvmfs/minerva.opensciencegrid.org/minerva/setup/setup_minerva_products.sh\n")
+    #mywrapper.write("export XRD_NETWORKSTACK=IPv4")
     mywrapper.write("cd "+topdir+"\n")
     # if topdir MAT_Github
     mywrapper.write("cd NSFNukeCCInclusive\n")
@@ -55,6 +56,8 @@ def createTarball(outdir,tag,basedir):
 def writeTarballProceedure(mywrapper,tag,basedir):
     print "I will be making the tarball upacking with this version" 
     print "Path is",basedir
+    mywrapper.write("export XRD_NETWORKSTACK=IPv4\n")
+    mywrapper.write("export UPS_OVERRIDE='-H Linux64bit+3.10-2.17'\n")
     mywrapper.write("cd $CONDOR_DIR_INPUT\n")
     mywrapper.write("tar -xvzf myareatar_%s.tar.gz\n"%tag)
     mywrapper.write("cd $CONDOR_DIR_INPUT\n")

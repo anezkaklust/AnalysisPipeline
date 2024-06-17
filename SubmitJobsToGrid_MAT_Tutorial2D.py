@@ -55,6 +55,8 @@ def createTarball(outdir,tag,basedir):
 def writeTarballProceedure(mywrapper,tag,basedir):
     print "I will be making the tarball upacking with this version" 
     print "Path is",basedir
+    mywrapper.write("export XRD_NETWORKSTACK=IPv4\n")
+    mywrapper.write("export UPS_OVERRIDE='-H Linux64bit+3.10-2.17'\n")
     mywrapper.write("cd $CONDOR_DIR_INPUT\n")
     mywrapper.write("tar -xvzf myareatar_%s.tar.gz\n"%tag)
     mywrapper.write("cd $CONDOR_DIR_INPUT\n")
