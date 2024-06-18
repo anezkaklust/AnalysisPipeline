@@ -123,10 +123,10 @@ python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 4 82 ${co
 python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 5 26 ${combinedVersion} 1
 python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 5 82 ${combinedVersion} 1
 python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 99 99 ${combinedVersion} 1
-: '
+
 echo Efficiency Tracker Daisy
 python ${plottingDir}plotDaisyEfficiency.py ${datadDir}/combined/Efficiency ${combinedVersion} 1
-
+: '
 
 echo Target Cross-section Extraction
 cd ${scriptDir}
