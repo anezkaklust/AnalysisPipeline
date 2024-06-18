@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # for all playlists
-indir=$1 #1D_v2_p4
+indir=$1
+#$1 #1D_v2_p4
 basedir=/minerva/app/users/${USER}/MAT_GitHub
 for playlist in minervame5A minervame6A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6H minervame6I minervame6J
 #for playlist in minervame5A minervame6B minervame6C minervame6D minervame6E minervame6F minervame6G minervame6I minervame6H minervame6J

@@ -5,7 +5,7 @@ printf "%s\n" "$now"
 
 
 plottingDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/plotting/
-datadDir=/minerva/data/users/anezkak/${now}_v430_p4_combinedPlastic/1D/
+datadDir=/minerva/data/users/anezkak/11-28-2023_v430_p4_combinedPlastic/1D/
 scaleFacDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/plasticBackground/
 scriptDir=/minerva/app/users/anezkak/MAT_GitHub/NSFNukeCCInclusive/ana/make_hists/
 
@@ -14,7 +14,7 @@ mkdir -p ${datadDir}
 
 combinedVersion="minervame5A6A6B6C6D6E6F6G6H6I6J"
 #combinedVersion="minervame5A"
-#: '
+: '
 cd ${datadDir}/combined/
 python ${scriptDir}combinePlaylistHistos_plasticSidebands.py ${datadDir}/combined/PlasticSidebandst02z26/ ../PlasticBkg_${combinedVersion}_t2_z26_sys.root
 python ${scriptDir}combinePlaylistHistos_plasticSidebands.py ${datadDir}/combined/PlasticSidebandst02z82/ ../PlasticBkg_${combinedVersion}_t2_z82_sys.root
@@ -24,7 +24,7 @@ python ${scriptDir}combinePlaylistHistos_plasticSidebands.py ${datadDir}/combine
 python ${scriptDir}combinePlaylistHistos_plasticSidebands.py ${datadDir}/combined/PlasticSidebandst04z82/ ../PlasticBkg_${combinedVersion}_t4_z82_sys.root
 python ${scriptDir}combinePlaylistHistos_plasticSidebands.py ${datadDir}/combined/PlasticSidebandst05z26/ ../PlasticBkg_${combinedVersion}_t5_z26_sys.root
 python ${scriptDir}combinePlaylistHistos_plasticSidebands.py ${datadDir}/combined/PlasticSidebandst05z82/ ../PlasticBkg_${combinedVersion}_t5_z82_sys.root
-
+'
 mkdir -p "PlasticSidebands"
 cd "PlasticSidebands"
 mv ${datadDir}/combined/PlasticBkg_${combinedVersion}*.root .
@@ -51,6 +51,7 @@ python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/combined/Plasti
 python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/combined/PlasticSidebands/ ${datadDir}/combined/PlasticSidebands 4 82 ${combinedVersion} 1
 python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/combined/PlasticSidebands/ ${datadDir}/combined/PlasticSidebands 5 26 ${combinedVersion} 1
 python ${plottingDir}plotbkgStack+ratio_sidebands.py ${datadDir}/combined/PlasticSidebands/ ${datadDir}/combined/PlasticSidebands 5 82 ${combinedVersion} 1
+: '
 #'
 echo Background Subtraction Targets
 cd ${datadDir}/combined
@@ -91,28 +92,28 @@ python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 5 26 ${
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
 python ${plottingDir}plotCVError.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
 
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 3 26 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 3 06 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 3 82 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 4 82 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
-python ${plottingDir}plotCVError_dataMCratio.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 3 26 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 3 06 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 3 82 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 4 82 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_target.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
 
-echo Background breakdown Targets
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 3 26 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 3 06 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 3 82 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 4 82 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
-python ${plottingDir}plotStackedBkg_target.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
+python ${plottingDir}plotStackedBkg+ratio_tracker.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
 
-echo Background breakdown Tracker
-python ${plottingDir}plotStackedBkg_tracker.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
+python ${plottingDir}plotDaisyDistrib_withBkg.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
+
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 2 26 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 2 82 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 3 26 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 3 06 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 3 82 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 4 82 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 5 26 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 5 82 ${combinedVersion} 1
+python ${plottingDir}plotStacked_intType.py ${datadDir}/combined/EventSelection/ 99 99 ${combinedVersion} 1
 
 echo Event Loop Tracker Daisy
 python ${plottingDir}plotDaisyDistrib.py ${datadDir}/combined/EventSelection/ ${combinedVersion} 1
@@ -149,7 +150,7 @@ echo Plot Background Subtracted Event Selection Tracker Daisy
 python ${plottingDir}plotDaisyDistrib_bkgSubtracted.py ${datadDir}/combined/BackgroundSubtracted ${combinedVersion} 1
 
 cd ${datadDir}/combined/
-
+: '
 echo Migration plots
 cd "Migration"
 python ${plottingDir}plotMigrationMatrix.py ${datadDir}combined/Migration 2 26 ${combinedVersion}
@@ -181,7 +182,7 @@ python ${plottingDir}plotEfficiency.py ${datadDir}/combined/Efficiency 99 99 ${c
 
 echo Efficiency Tracker Daisy
 python ${plottingDir}plotDaisyEfficiency.py ${datadDir}/combined/Efficiency ${combinedVersion} 1
-
+'
 echo Target Cross-section Extraction
 cd ${scriptDir}
 ./extractCrossSection ${datadDir}/combined/ 26 ${combinedVersion} | tee ${datadDir}/combined/cross-sectiont235z26.txt
@@ -240,7 +241,7 @@ python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combin
 #python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 pZmu1D
 #python ${plottingDir}plotXsection_trackerDaisy.py ${datadDir}/combined/ ${combinedVersion} 1 ThetamuDeg
 
-python ${plottingDir}plotXsection_trackerDaisy_angle.py ${datadDir}/combined/ ${combinedVersion} 1
+#python ${plottingDir}plotXsection_trackerDaisy_angle.py ${datadDir}/combined/ ${combinedVersion} 1
 
 echo Plot Stacked Target Cross-section
 cd ${datadDir}/combined/
